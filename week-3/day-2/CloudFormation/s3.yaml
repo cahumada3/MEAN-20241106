@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template to create an S3 bucket... Versioning, Encryption, Disable Block Public
+
+Parameters:
+  EnvironmentName:
+    Type: String
+    Description: Name of bucket
+  PrincipalARN:
+    Type: String
+    Description: ARN of AWS User, Role, or Identity
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Description: Create an S3 Bucket using CFN
+    Properties:
+      BucketName: !Sub ${EnvironmentName}-1357
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  # BucketPolicy:
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Description: S3 Bucket Policy for ARN access to directories
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: useraccess
+            Effect: Allow
+            Principal: '*'
+              # AWS: !Ref PrincipalARN --> If supplying userARN
+            Action:
+              - s3:GetObject
+              - s3:PutObject
+              - s3:ListBucket
+            Resource:
+              - !Sub arn:aws:s3:::${S3Bucket}
+              - !Sub arn:aws:s3:::${S3Bucket}/*
+    DependsOn: S3Bucket
+
+
+Outputs:
+  S3Bucket:
+    Description: S3 bucket created from CFN Template
+    Value: !Ref S3Bucket

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags</title>
+</head>
+<body>
+    <!-- a general note about HTML, is that any white space after the first spcace/return does NOT count -->
+    ABC         DEF 
+
+    GHI
+
+    <!-- for tags, there are 2 main distinctions:
+            block vs inline
+                block - automatically take up the available space left to right and push anything following it to the next line
+                inline - takes up only as much as its contents and displays in line with other inline tags
+
+            semantic vs generic
+                there are many tags that do exactly the same thing but have different names. 
+                    WHY? 
+                    can be helpful for people uisng your site from a coding perspective to be able to understand what the intention of a certain section/tag is
+                    also helpful for screen readers and accessability purpose
+
+                    Generic Tags
+                        block - div
+                        inline - span
+
+                    Semantic Tags
+                        block with no formatting -> with no forheader, footer, nav, aside, section, etc.
+                        block with formatting -> p, h1-h6, etc.
+
+                        inline with no formatting -> n/a 
+                        inline with formatting -> strong, em, a, etc.
+
+                        there are also several other tags that dont really fall under these categories
+                        like table, img, various form tags, etc. 
+    -->
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quibusdam dignissimos officiis, explicabo quos nesciunt distinctio veritatis excepturi dolorum voluptates esse placeat iusto mollitia numquam ipsa quidem perferendis a eligendi.</p>
+    <p>some words</p>
+    <br>
+    <p>some more words</p>
+
+    <div>First Div</div>
+    <div>Second Div</div>
+    <div style="margin-bottom: 3000px;">Third Div<span>this includes a span</span></div>
+
+    
+
+</body>
+</html>

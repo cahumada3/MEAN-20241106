@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS BASICS</title>
+    <!--
+        these styles only apply to elemnts on this page, but they can each apply
+        to multiple elements, depending on the selector
+     -->
+
+     <style>
+        /* this will apply to ALL h1 elements on THIS page */
+        h1 {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* this will apply to ANY span inside of ANY hl, however deeply nested*/
+        h1 span{
+            font-style: italic;
+        }
+
+        /* this will apply to ANY strong tag that is a DIRECT child to the h1 tag */
+        h1 > strong {
+            text-transform: uppercase;
+        }
+
+        /* you can create a CSS class to apply the same style to whatever you like*/
+        .purple {
+            color: purple;
+            font-weight: bold;
+        }
+
+        .large {
+            font-size: 40px;
+        }
+
+        #last-paragraph {
+            border: 2px solid black;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        nav {
+            background-color: aquamarine;
+            text-align: center;
+        }
+
+        nav > a {
+            display: inline-block;
+            font-size: 20;
+            padding: .75em 1em;
+            font-weight: bold;
+            text-decoration:line-through;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+     </style>
+
+     <link rel="stylesheet" href="../css/sample-stylesheet.css">
+</head>
+<body>
+    <nav>
+        <a href="#">Homepage</a>
+        <a href="#">About</a>
+        <a href="#">Contact Us</a>
+    </nav>
+
+    <!--
+        3 ways to use CSS
+        (in order from easiest/worst -> hardest/BEST)
+
+        1. inline, inside a specific tag
+            - quick and easy
+            - you can NOT reuse it
+            - can look clunky in the HTML code 
+
+        2. in the style tag in the head of a single page
+            - takes a little more setup
+            - you can reuse the styles across the entire page
+
+        3. in an external style sheet, is loaded in the head tag
+            - takes even more setup
+            - the styles are reusable across the entire site
+            - can even reference another stylesheet from another website (Bootstrap, PrimeNG, etc.)
+            - usually the best way to style your code
+
+    -->
+
+    <!-- uses style inline-->
+    <h1 style="color: blue; font-size: 40px">Style Inline</h1>
+
+    <h1>Styled via head style tag</h1>
+    <h1>Styled via head style tag <span>Internal <strong>Span</strong></span></h1>
+    <h1>Styled via head style tag <strong>Span</strong></h1>
+    <span>External Span</span>
+
+    <!-- 
+        when there is a conflict between the styling locations/rules this is the order it takes
+            inline > in head (style tag) > external
+        styles that are lower down in the sheet itself > ones that are higher
+    -->
+    
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam magni hic ea necessitatibus commodi omnis et id eaque, quos voluptates dignissimos dicta neque inventore accusantium! Error ducimus saepe illum ea!</p>
+    <p class="purple large">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum saepe incidunt iste numquam tempora odit eum deserunt reiciendis corporis impedit suscipit recusandae dolores veritatis praesentium culpa facere unde, repellendus animi.</p>
+    <p class="purple" id="last-paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, ratione magnam amet quae blanditiis veritatis illo ullam aliquid! Illum delectus eveniet esse eligendi ratione at suscipit, corrupti officia ex sed.</p>
+    <p class="test">THIS IS A PARAGRAPH</p>
+
+</body>
+</html>

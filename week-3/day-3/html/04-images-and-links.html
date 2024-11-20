@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images and Links</title>
+</head>
+<body>
+
+    <!-- 
+    you can store any media locally and refer to it in its original location 
+        some tradeoffs:
+            the speed of the loading/trasfer, hosting/bandwidths cost, etc. 
+        you can either you the relative path or absolute path
+    -->
+    <!-- uses the absolute path to retrieve image-->
+    <img src="https://m.media-amazon.com/images/I/515WdhLbehL._SX300_SY300_QL70_FMwebp_.jpg" alt="Pearl Jam" width="200px">
+    <!-- uses the relative path to retrieve image-->
+    <img src="../images/pearl-jam.webp" alt="Pearl Jame" width="400px">
+
+    <!-- for links, we use the a tag "anchor tag"-->
+    <!-- linking to remote websites, the target property set to "_blank" which will open a new tab-->
+    <a href="https://target.com" target="_blank">Link to Target</a>
+    <!-- can also link to another page that's saved locally-->
+     <a href="../html/03-tables.html" target="_blank">Link to My Tables Page</a>
+     <!-- link to another target anchor on another page-->
+    <a href="../html/02-tags.html#target">Go To My Target</a>
+    <!-- another example-->
+    <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">Link to Wiki Html</a>
+    <!-- an on-page target-->
+    <a href="#target">Go To My on-page Target</a>
+    <h3 id="target">On-page target</h3>
+
+
+</body>
+</html>

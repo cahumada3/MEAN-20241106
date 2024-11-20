@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tables Example</title>
+</head>
+<body>
+    <!-- tables are pretty much what you'd expect -->
+    <!-- we lay out a row/column structure
+        they're not great at laying out an overall webpage
+        they're ARE great for laying out database information -->
+
+    <!-- 
+        the overall tag is table -> the entire table 
+            thead -> the table header for a row
+            tbody -> the main content of the table
+            tfoot -> the footer row of the table
+
+            within each:
+                tr -> table row
+
+                and within that:
+                    th -> a table header cell (bold)
+                    td -> a table data cell
+        -->
+
+    <!-- by default tables and cells will adjust their size to the content -->
+
+    <table>
+        <thead>
+            <tr style="text-align: left">
+                <th>Type</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Deliciousness</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pumpkin Spiced Latte</td>
+                <td>Large</td>
+                <td>$11.25</td>
+                <td>7.5 pretty average</td>
+            </tr>
+            <tr>
+                <td>Chamomile Tea</td>
+                <td>Medium</td>
+                <td>$3.50</td>
+                <td>8.5 tasty and helps with sore throat</td>
+            </tr>
+            <tr>
+                <td>Espresso</td>
+                <td>Shot</td>
+                <td>$3.75</td>
+                <td>9.5 a shot of energy, very delicious! </td>
+            </tr>
+        </tbody>
+        <tfoot style="font-style: italic">
+            <td>Get you a drink!</td>
+            <td>They are soooo tasty!</td>
+        </tfoot>
+    </table>
+    
+</body>
+</html>
