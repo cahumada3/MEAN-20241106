@@ -1,0 +1,58 @@
+<main>
+    <h1>SALES</h1>
+
+    <form>
+        <h2>Create Sale</h2>
+        <!-- 
+            each input is mapped to a TS variable with its [(ngModel)] property
+            the value of the ngModel is the name of the variable
+            you MUST also have a name property that matches the variable name
+            changing either the input value or the TS variable changes the other
+            this is two-way binding - to map the property to the visual form
+            and to map the changes in the form to the property value
+        -->
+
+        <label for="customerFirstName">Customer First Name</label>
+        <input type="text" name="customerFirstName" id="customerFirstName">
+
+        <label for="customerLastName">Customer Last Name</label>
+        <input type="text" name="customerLastName" id="customerLastName">
+
+        <label for="date">Date</label>
+        <input type="text" name="date" id="date">
+
+        <label for="total">Total</label>
+        <input type="total" name="total" id="total">
+
+        <label for="salespersonId">Salesperson ID</label>
+        <select name="salespersonId" id="salespersonId">
+            <option></option>
+        </select>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Salesperson ID</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>{{ mockSale.id }}</td>
+            <td>{{ mockSale.customer_first_name }}</td>
+            <td>{{ mockSale.customer_last_name }}</td>
+            <td>{{ mockSale.date }}</td>
+            <td>{{ mockSale.total }}</td>
+            <td>{{ mockSale.salesperson_id }}</td>
+        </tbody>
+    </table>
+
+    <app-salesperson></app-salesperson>
+
+</main>
