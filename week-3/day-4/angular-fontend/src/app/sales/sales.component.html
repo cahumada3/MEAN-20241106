@@ -13,21 +13,25 @@
         -->
 
         <label for="customerFirstName">Customer First Name</label>
-        <input type="text" name="customerFirstName" id="customerFirstName">
+        <input type="text" name="customerFirstName" id="customerFirstName" [(ngModel)]="customerFirstName">
 
         <label for="customerLastName">Customer Last Name</label>
-        <input type="text" name="customerLastName" id="customerLastName">
+        <input type="text" name="customerLastName" id="customerLastName" [(ngModel)]="customerLastName">
 
         <label for="date">Date</label>
-        <input type="text" name="date" id="date">
+        <input type="text" name="date" id="date" [(ngModel)]="date">
 
         <label for="total">Total</label>
-        <input type="total" name="total" id="total">
+        <input type="total" name="total" id="total" [(ngModel)]="total">
 
         <label for="salespersonId">Salesperson ID</label>
-        <select name="salespersonId" id="salespersonId">
-            <option></option>
+        <select name="salespersonId" id="salespersonId" [(ngModel)]="salespersonId">
+            @for (spId of salespersonIds; track $index) {
+                <option value="{{ spId }}">{{ spId }}</option>
+            }
         </select>
+
+        <button type="button" (click)="createSale()">Create New</button>
     </form>
 
     <table>
@@ -44,15 +48,18 @@
             </tr>
         </thead>
         <tbody>
-            <td>{{ mockSale.id }}</td>
-            <td>{{ mockSale.customer_first_name }}</td>
-            <td>{{ mockSale.customer_last_name }}</td>
-            <td>{{ mockSale.date }}</td>
-            <td>{{ mockSale.total }}</td>
-            <td>{{ mockSale.salesperson_id }}</td>
+            @for (sale of sales; track $index) {
+                <tr>
+                    <td>{{ sale.id }}</td>
+                    <td>{{ sale.customer_first_name }}</td>
+                    <td>{{ sale.customer_last_name }}</td>
+                    <td>{{ sale.date }}</td>
+                    <td>{{ sale.total }}</td>
+                    <td>{{ sale.salesperson_id }}</td>
+                    <td><button type="button" (click)="deleteSale(sale.id)"></button></td>
+                </tr>
+            }
         </tbody>
     </table>
-
-    <app-salesperson></app-salesperson>
 
 </main>

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { SalesComponent } from './sales/sales.component';
+import { SalespeopleComponent } from './salespeople/salespeople.component';
 
 /**
  * each item in our route array is a single path
@@ -10,5 +11,9 @@ export const routes: Routes = [
     {
         path: 'sales',
         component: SalesComponent
+    },
+    {
+        path: 'salespeople',
+        component: SalespeopleComponent
     }
 ];

@@ -1,0 +1,23 @@
+<form [formGroup]="createForm">
+    <h2>Create Salesperson</h2>
+
+    <label for="createFirstName">First Name</label>
+    <input type="text" id="createFirstName" name="createFirstName" formControlName="createFirstName">
+
+    <label for="createLastName">Last Name</label>
+    <input type="text" id="createLastName" name="createLastName" formControlName="createLastName">
+
+    <label for="createDepartment">Department</label>
+    <input type="text" id="createDepartment" name="createDepartment" formControlName="createDepartment">
+
+    <label for="createHireDate">Hire Date</label>
+    <input type="text" id="createHireDate" name="createHireDate" formControlName="createHireDate">
+
+    <label for="createSalary">Salary</label>
+    <input type="text" id="createSalary" name="createSalary" formControlName="createSalary">
+
+    <button type="button" (click)="resetCreateForm">Reset Form</button>
+
+    <button type="button" (click)="submitCreateForm" [disabled]="createForm.invalid">Reset Form</button>
+
+</form>

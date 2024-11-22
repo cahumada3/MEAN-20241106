@@ -1,20 +1,54 @@
 import { Component } from '@angular/core';
 import { Sale } from '../models/sale';
 import { HttpService } from '../services/http.service';
-import { SalespersonComponent } from '../salesperson/salesperson.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sales',
   standalone: true,
-  imports: [SalespersonComponent],
+  imports: [FormsModule, CommonModule],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
 })
 export class SalesComponent {
 
+  // must inject the http service here to have access to its methods
   constructor(private httpService: HttpService) {
     this.getAllSales();
+    this.getAllSalespersonIds();
   }
+
+  // mockSale: Sale = new Sale(1, 'Joe', 'Bob', '2020-05-22', 90000.00, 1);
+
+  // mockSales: Sale[] = [
+  //   new Sale(2, 'Caroline', 'Ahumada', '2023-06-22', 90000.00, 1),
+  //   new Sale(3, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
+  //   new Sale(4, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
+  //   new Sale(5, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
+  //   new Sale(6, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
+  // ]
+
+  sales: Sale[] = [];
+  salespersonIds: number[] = [];
+
+  // these variables will hold our create form values
+  // each is mapped to a form input
+  // changing the form changes the values, and changing the values changes the form
+  customerFirstName: string = '';
+  customerLastName: string = '';
+  date: string = '';
+  total: number = 0;
+  salespersonId: number = this.salespersonIds[0];
+
+  // for the update form
+  originalId: number = 0;
+  idUpdate: number = 0;
+  customerFirstNameUpdate: string = '';
+  customerLastNameUpdate: string = '';
+  dateUpdate: string = '';
+  totalUpdate: number = 0;
+  salespersonIdUpdate: number = this.salespersonIds[0];
 
   getAllSales() {
     this.httpService.getAllSales().subscribe(data => {
@@ -31,18 +65,38 @@ export class SalesComponent {
       this.sales = tempSales;
     })
   }
-  
 
-  mockSale: Sale = new Sale(1, 'Joe', 'Bob', '2020-05-22', 90000.00, 1);
+  getAllSalespersonIds() {
+    this.httpService.getAllSalespeople().subscribe(data => {
+      this.salespersonIds = [];
+      if(data.body)
+        for (let sp of data.body)
+          this.salespersonIds.push(sp.id);
+    })
+  }
 
-  mockSales: Sale[] = [
-    new Sale(2, 'Caroline', 'Ahumada', '2023-06-22', 90000.00, 1),
-    new Sale(3, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
-    new Sale(4, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
-    new Sale(5, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
-    new Sale(6, 'Joe', 'Bob', '2020-05-22', 90000.00, 1),
-  ]
+  createSale() {
+    let newSale = new Sale(0, 
+                           this.customerFirstName,
+                           this.customerLastName,
+                           this.date,
+                           this.total,
+                           this.salespersonId);
 
-  sales: Sale[] = [];
+    this.httpService.addSale(newSale).subscribe(data => {
+      console.log(data.body);
+      this.getAllSales();
+      this.getAllSalespersonIds();
+    })
+  }
+
+  deleteSale(id: number) {
+    this.httpService.deleteSale(id).subscribe(data => {
+      console.log(data);
+      this.getAllSales();
+      this.getAllSalespersonIds();
+    })
+  }
+
 
 }
