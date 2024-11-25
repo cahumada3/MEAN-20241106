@@ -1,0 +1,21 @@
+<article>
+    <ul>
+        <li>ID: {{ salesperson.id }}</li>
+        <li>First Name: {{ salesperson.first_name }}</li>
+        <li>Last Name: {{ salesperson.last_name }}</li>
+        <li>Department: {{ salesperson.department }}</li>
+        <!--
+            this value is being sent through a pipe
+            it alters the data being displayed
+            without altering the underlying data
+            syntax = {{ <ts variable name> | <pipe type> : <param1> : <param2> : etc. }}
+        -->
+        <li>Hire Date: {{ salesperson.hire_date | date : 'longDate' }}</li>
+        <li>Salary: {{ salesperson.salary | currency : 'USD' }}</li>
+    </ul>
+    
+    <button type="button" (click)="showDetails()">DETAILS</button>
+    <button type="button" (click)="setFavoriteSalesperson()">SET FAVE</button>
+    <button type="button" (click)="tenPercentRaise()">10%</button>
+    <button type="button" (click)="deleteSalesperson()">DELETE</button>
+</article>
